@@ -1,4 +1,5 @@
 import re
+import json
 
 def get_team_numbers(dict):
     """
@@ -6,7 +7,7 @@ def get_team_numbers(dict):
 
     parameter: python dictionary
 
-    returns: all the keys(team numbers) of a team.
+    returns: all the keys(t eam numbers) of a team.
 
     this function allows for the code to stay organized and sweeettt
     """
@@ -31,7 +32,7 @@ def flip_hebrew(text):
     else:
         return text
 
-def add_teams(teams = {}):
+def add_teams(teams = {}, save = False, file = "data.json"):
     """
     generates a team list for a global database, competition, etc.
 
@@ -72,10 +73,24 @@ def add_teams(teams = {}):
         team_place = flip_hebrew(temp_team_place)
         print(f"(\nTeam {team_number}'s name({team_name}) has been added to the database.")
         teams.update({team_number : {team_name:team_place}})
-    return teams
+    if save == False:
+        return teams
+    else:
+        save_data("data.txt", teams)
+        return teams
 
-hi = add_teams()
+def save_data(file , thing):
+    with open(file, 'w') as file:
+        json.dump(thing, file, indent=4)
+def get_data(file):
+    with open('data.txt', 'r') as file:
+        return json.load(file)
 
-for i in range(len(hi)):
-    num = get_team_numbers(hi)[i]
-    print(f"#{hi[num]} {team_name.}")
+def team_list(data = get_data("data.txt")):
+    for i in range(len(data)):
+        num = get_team_numbers(data)[i]
+        print(f"#{get_team_numbers(data)[0]} {team_name(data, num)} - {team_location(data, num)}")
+#Generate the teams
+
+# hi = add_teams(teams = get_data("data.txt"), save=True)
+team_list()
