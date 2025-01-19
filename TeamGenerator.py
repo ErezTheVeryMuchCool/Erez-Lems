@@ -46,6 +46,9 @@ def add_teams(teams = {}, save = False, file = "data.json"):
     had the team number #994, and was located at הכפר הירוק, then the 
     function would return: {994:{"PandaBlitz":"הכפר הירוק"}}
     """
+    if teams != {}:
+        print("Current teams:")
+        team_list()
 
     team_number = -1
     
