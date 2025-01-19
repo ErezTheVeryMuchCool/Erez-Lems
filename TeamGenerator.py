@@ -92,8 +92,8 @@ def get_data(file):
 def team_list(data = get_data("data.txt")):
     for i in range(len(data)):
         num = get_team_numbers(data)[i]
-        print(f"#{get_team_numbers(data)[0]} {team_name(data, num)} - {team_location(data, num)}")
+        print(f"#{get_team_numbers(data)[i]} {team_name(data, num)} - {team_location(data, num)}")
 #Generate the teams
 
-# hi = add_teams(teams = get_data("data.txt"), save=True)
+hi = add_teams(teams = get_data("data.txt"), save=True)
 team_list()
