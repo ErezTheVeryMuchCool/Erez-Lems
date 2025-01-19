@@ -3,6 +3,16 @@ from colorama import Fore
 import random
 import json
 
+
+def room_judge():
+    print("you may now go to the ")
+
+def feild_judge():
+    print("feild judge")
+def master():
+    print("Master")
+def caller():
+    print("caller")
 passwords = "Passwords.txt"
 jobs = 6
 def password_generator(amount):
@@ -32,7 +42,20 @@ print("Hello volunteer and welcome to the erez-lems. a better alternative for jo
 print(Fore.CYAN + "\nplease enter your job number. choose either:")
 for i in range(jobs):
     print(f"{i+1}. " + joblistlist[i])
-job = int(input(" "))
+job = 0
+while job == 0:
+    job = int(input(" "))
 
-if job > jobs or job < 1:
-    print("Thats not a real job mate! try again.")
+    if job > jobs or job < 1:
+        print("Thats not a real job mate! try again.\n")
+        job = 0
+        continue
+
+
+print(f"You have selected {joblistlist[job]}")
+if job == 1:
+    room_judge()
+if job == 2:
+    
+
+
